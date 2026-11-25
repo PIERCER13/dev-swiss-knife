@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="piercer" />
+  <title>Dev Swiss Knife — JSON, Base64, Hash, JWT, Regex &amp; Cron | piercer</title>
+  <meta name="description" content="Canivete suíço para desenvolvedores: Formatador JSON, Base64/URL, SHA-256/512, Decodificador JWT, Regex Tester e Cron Parser." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div>
+        <h1>Dev Swiss Knife</h1>
+        <p class="subtitle">JSON, Base64/URL, Hash SHA-256/512, JWT Decoder, Regex Tester e Cron Expression</p>
+      </div>
+      <nav class="nav-pills">
+        <button class="pill active" data-tab="json" type="button">JSON</button>
+        <button class="pill" data-tab="encode" type="button">Base64 &amp; Hash</button>
+        <button class="pill" data-tab="jwt" type="button">JWT</button>
+        <button class="pill" data-tab="regex" type="button">Regex</button>
+        <button class="pill" data-tab="cron" type="button">Cron</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main-wrap">
+    <!-- JSON -->
+    <section id="tab-json" class="panel active">
+      <div class="card">
+        <div class="head-row">
+          <h2>Formatador &amp; Validador JSON</h2>
+          <div class="actions">
+            <button id="jsonFormatBtn" class="btn btn-primary" type="button">Formatar</button>
+            <button id="jsonMinBtn" class="btn btn-secondary" type="button">Minificar</button>
+          </div>
+        </div>
+        <textarea id="jsonInput" class="input mono" rows="12">{"projeto":"piercer_tools","ativo":true,"tags":["dev","qa"]}</textarea>
+        <p id="jsonStatus" class="micro-note mono"></p>
+      </div>
+    </section>
+
+    <!-- ENCODE & HASH -->
+    <section id="tab-encode" class="panel">
+      <div class="card">
+        <h2>Base64, URL Encode &amp; Hash (SHA-256 / SHA-512)</h2>
+        <textarea id="encInput" class="input mono" rows="4" placeholder="Digite ou cole o texto aqui...">piercer_tools</textarea>
+        <div class="actions" style="margin:0.8rem 0;">
+          <button id="b64EncBtn" class="btn btn-primary" type="button">Base64 Encode</button>
+          <button id="b64DecBtn" class="btn btn-secondary" type="button">Base64 Decode</button>
+          <button id="urlEncBtn" class="btn btn-secondary" type="button">URL Encode</button>
+          <button id="urlDecBtn" class="btn btn-secondary" type="button">URL Decode</button>
+          <button id="hashBtn" class="btn btn-secondary" type="button">Gerar SHA-256 &amp; SHA-512</button>
+        </div>
+        <textarea id="encOutput" class="input mono" rows="5" readonly></textarea>
+      </div>
+    </section>
+
+    <!-- JWT -->
+    <section id="tab-jwt" class="panel">
+      <div class="card">
+        <h2>Decodificador JWT (Local)</h2>
+        <textarea id="jwtInput" class="input mono" rows="3" placeholder="Cole o token JWT (eyJ...)...">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6InBpZXJjZXIiLCJpYXQiOjE3MzAwMDAwMDB9.signature</textarea>
+        <div class="grid-2" style="margin-top:1rem;">
+          <div>
+            <label class="lbl">Header</label>
+            <pre id="jwtHeader" class="code-box mono"></pre>
+          </div>
+          <div>
+            <label class="lbl">Payload</label>
+            <pre id="jwtPayload" class="code-box mono"></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REGEX -->
+    <section id="tab-regex" class="panel">
+      <div class="card">
+        <h2>Testador de Regex</h2>
+        <div class="grid-2" style="grid-template-columns:1fr 120px; margin-bottom:0.75rem;">
+          <input id="rxPattern" class="input mono" value="\b\w+@\w+\.\w+\b" placeholder="Padrão Regex" />
+          <input id="rxFlags" class="input mono" value="gi" placeholder="Flags" />
+        </div>
+        <textarea id="rxText" class="input mono" rows="5">Contatos: contato@piercer.dev e suporte@exemplo.com.br</textarea>
+        <p id="rxMatches" class="micro-note mono" style="margin-top:0.75rem;"></p>
+      </div>
+    </section>
+
+    <!-- CRON -->
+    <section id="tab-cron" class="panel">
+      <div class="card">
+        <h2>Cron Expression Parser</h2>
+        <div class="actions" style="margin-bottom:0.75rem;">
+          <button class="btn btn-secondary cron-preset" data-cron="*/5 * * * *" type="button">A cada 5 min</button>
+          <button class="btn btn-secondary cron-preset" data-cron="0 * * * *" type="button">A cada hora</button>
+          <button class="btn btn-secondary cron-preset" data-cron="0 9 * * 1-5" type="button">Seg-Sex 09:00</button>
+        </div>
+        <input id="cronInput" class="input mono" value="*/5 * * * *" />
+        <p id="cronDesc" class="micro-note mono" style="margin-top:0.75rem;"></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+  <script src='./piercer_i18n.js'></script>
+</body>
+</html>
